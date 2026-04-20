@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  title: Product Service API
+  description: REST API for managing products
+  version: 1.0.0
+
+paths:
+  /products:
+    get:
+      summary: Get all products
+      operationId: getProductsList
+      responses:
+        '200':
+          description: List of all products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+              example:
+                - id: 7567ec4b-b10c-48c5-9345-fc73c48a80aa
+                  title: ProductOne
+                  description: Short Product Description1
+                  price: 24
+                  count: 1
+
+  /products/{productId}:
+    get:
+      summary: Get product by ID
+      operationId: getProductsById
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The product ID
+      responses:
+        '200':
+          description: A single product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: Product not found
+
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - id
+        - title
+        - description
+        - price
+        - count
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 7567ec4b-b10c-48c5-9345-fc73c48a80aa
+        title:
+          type: string
+          example: ProductOne
+        description:
+          type: string
+          example: Short Product Description1
+        price:
+          type: number
+          example: 24
+        count:
+          type: integer
+          example: 1
+
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          example: Product not found

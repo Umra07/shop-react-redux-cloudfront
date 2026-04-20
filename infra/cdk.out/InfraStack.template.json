@@ -36,10 +36,10 @@
      "Statement": [
       {
        "Action": [
-        "s3:DeleteObject*",
+        "s3:PutBucketPolicy",
         "s3:GetBucket*",
         "s3:List*",
-        "s3:PutBucketPolicy"
+        "s3:DeleteObject*"
        ],
        "Effect": "Allow",
        "Principal": {
@@ -369,8 +369,8 @@
      "Statement": [
       {
        "Action": [
-        "s3:GetBucket*",
         "s3:GetObject*",
+        "s3:GetBucket*",
         "s3:List*"
        ],
        "Effect": "Allow",
@@ -386,8 +386,7 @@
            ":s3:::",
            {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
-           },
-           "/*"
+           }
           ]
          ]
         },
@@ -402,7 +401,8 @@
            ":s3:::",
            {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
-           }
+           },
+           "/*"
           ]
          ]
         }
@@ -410,16 +410,16 @@
       },
       {
        "Action": [
-        "s3:Abort*",
-        "s3:DeleteObject*",
-        "s3:GetBucket*",
         "s3:GetObject*",
+        "s3:GetBucket*",
         "s3:List*",
+        "s3:DeleteObject*",
         "s3:PutObject",
         "s3:PutObjectLegalHold",
         "s3:PutObjectRetention",
         "s3:PutObjectTagging",
-        "s3:PutObjectVersionTagging"
+        "s3:PutObjectVersionTagging",
+        "s3:Abort*"
        ],
        "Effect": "Allow",
        "Resource": [
@@ -447,8 +447,8 @@
       },
       {
        "Action": [
-        "cloudfront:CreateInvalidation",
-        "cloudfront:GetInvalidation"
+        "cloudfront:GetInvalidation",
+        "cloudfront:CreateInvalidation"
        ],
        "Effect": "Allow",
        "Resource": "*"
@@ -507,32 +507,10 @@
     "aws:asset:property": "Code"
    }
   },
-  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CLogGroup817B64E9": {
-   "Type": "AWS::Logs::LogGroup",
-   "Properties": {
-    "LogGroupName": {
-     "Fn::Join": [
-      "",
-      [
-       "/aws/lambda/",
-       {
-        "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
-       }
-      ]
-     ]
-    },
-    "RetentionInDays": 731
-   },
-   "UpdateReplacePolicy": "Retain",
-   "DeletionPolicy": "Retain",
-   "Metadata": {
-    "aws:cdk:path": "InfraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/LogGroup/Resource"
-   }
-  },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/9VVTY/bOAz9LdWxUNx2pkAXuWUyu22B2W2QDHoJgoEiMY5mZNGQqKRew/+9kCxljH5tr3sIbPNR5OMTyVxVV2//qF6/EGc/k+ppZvS+6jck5BMXZ//Q++uqvwnyCWjbMwcNnoRZodGyY3OmwJPDjnG2NyifVmFvtFxICd6zOXvJOBOB8BYMEHzaP4Ikz+bkAgw7vjzYS9xGf9GWzdmURMzur6sE+Wp0XXwXbdjxERo5bXu2T58p/TTLBf/dXOOBDQmCBuw01Y3wsE3Vjb/dwKXBoA4OLVX9rfbk9D6QRrvtmYKDCIZu4ChOGh2b9wydrhOHeP6k4Qxu5ZBQ4rO0DpR2IGlGODsStZ4NvMRaI9IoQI4BzqFbg2/RevBsvu1ZPBPJh3ITLsMffgasRA0rQccs3bDjm+tPiel4o0u05NDEypOuP8CieVr+wP31Q6+gNdhFEbO0txcDF94D+WoRHwM3otkrUfXLg70THbjP4LxGyzfa1gYI7V/ByqxrCFrlCkz0jWUnagzsSTu0Mf7FIcZdBdeih2wj3QCG4uHQFKCBBl230f8WA7RHaMAJsyF0ooYJdGrl89sm7C1QkdWDDE5T995haIvxoA34zhM0hRnWySF/SlQl9FFYZcAVfsFGwuPd8J4Jpf4GEkqQGOvmcax2P4ZSj+74RLz/VOx/r86f05KeVRjBu2n545Yo4gxci6bq12hg2zPhfWhA3XRxbFunrdStMAspMVykGn3igUWKkFmwRlhRg0oTrfNUTm3dwtkyayOte1yVFGUPbPuMEgl5/GiNtnDBLhX9Evx13J+jSZZYFs+7M1Zbkt3jOvXENxy+Nys1WaHTtL9rTjRGBgM3WPuqv8ttERs5v/4jyvUn/+IxDHwZPGGzBo/BycveHovLxrx3HtJUPIizl0ZXi7NfGp06JfLgaUVtSNTa1mn9BWoDfRN+5fCkFbj4FzFwiwqqR//qdHVVvXlXvXnx6LWe5Wat1uPzK3AjNHGBBwAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/5VQwWrDMAz9lubsemsz2NgtTdlp0NLCLmME11GKWscultyumPz7SLy1ZbDDTnp6kt57aCqnD0/yfqRONNb1fmxwI+Oald4LdaIqUi7jLOg9sCgbm9B7zFr8RJs9Z7dn/T7lchiRTKtFYDcHAwyLzQ40U9Z9iDRaOoP6fFVN/T+008GaFUML9lZ6pgg6oY0LdeOdZRnnSOxxExidFet84XGLttAaiEpn2TvTB/mDvj3uBOVVrOFg3Ll3/c4yvxBCEQGTLPrSCaPaTa1kLBv7qs7g38DTkAHt1gA7+xKsHlJdQNlcyE6gamVcOQM9PdTr3xLqOlEGYteugFzwOm3+4ORfmd67UifSBmVxotLgEEcMMdestmi3wwsCHwL/Ulx6d8QafPqrdTXIHd0dp1M5eZST0Y4Qxz5YxhbkKtUvSEZjZFgCAAA="
    },
    "Metadata": {
     "aws:cdk:path": "InfraStack/CDKMetadata/Default"

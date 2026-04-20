@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib/core';
 import { DeployWebAppStack } from '../lib/deploy-web-app-stack';
+import { ProductServiceStack } from "../lib/product-service/product-service-stack";
 
 const app = new cdk.App();
 new DeployWebAppStack(app, 'InfraStack', {
@@ -18,3 +19,5 @@ new DeployWebAppStack(app, 'InfraStack', {
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+
+new ProductServiceStack(app, "ProductServiceStack", {})
