@@ -7,44 +7,6 @@
   ],
   "/InfraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C": [
     {
-      "type": "aws:cdk:analytics:construct",
-      "data": {
-        "layers": [
-          "*"
-        ],
-        "environment": "*",
-        "timeout": "*",
-        "role": "*",
-        "memorySize": "*",
-        "ephemeralStorageSize": "*",
-        "vpc": "*",
-        "vpcSubnets": "*",
-        "securityGroups": "*",
-        "filesystem": "*",
-        "logGroup": "*",
-        "code": "*",
-        "handler": "*",
-        "runtime": "*"
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "addEnvironment": [
-          "*",
-          "*"
-        ]
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "addLayers": [
-          "*"
-        ]
-      }
-    },
-    {
       "type": "aws:cdk:is-custom-resource-handler-singleton",
       "data": true
     },
@@ -63,35 +25,6 @@
     {
       "type": "aws:cdk:logicalId",
       "data": "CheckBootstrapVersion"
-    }
-  ],
-  "/InfraStack/deployment/FrontendBucket": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": {
-        "removalPolicy": "destroy",
-        "blockPublicAccess": "*",
-        "autoDeleteObjects": true
-      }
-    }
-  ],
-  "/InfraStack/deployment/CloudfrontDistribution": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": {
-        "defaultBehavior": {
-          "origin": "*",
-          "viewerProtocolPolicy": "redirect-to-https"
-        },
-        "defaultRootObject": "*",
-        "errorResponses": [
-          {
-            "httpStatus": "*",
-            "responseHttpStatus": "*",
-            "responsePagePath": "*"
-          }
-        ]
-      }
     }
   ],
   "/InfraStack/deployment/CloudFrontURL": [
@@ -118,74 +51,10 @@
       "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
     }
   ],
-  "/InfraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": {
-        "assumedBy": {
-          "principalAccount": "*",
-          "assumeRoleAction": "*"
-        },
-        "managedPolicies": [
-          {
-            "managedPolicyArn": "*"
-          }
-        ]
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "addToPrincipalPolicy": [
-          {}
-        ]
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "attachInlinePolicy": [
-          "*"
-        ]
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "attachInlinePolicy": [
-          "*"
-        ]
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "addToPrincipalPolicy": [
-          {}
-        ]
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "addToPrincipalPolicy": [
-          {}
-        ]
-      }
-    }
-  ],
   "/InfraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource": [
     {
       "type": "aws:cdk:logicalId",
       "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
-    }
-  ],
-  "/InfraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/LogGroup": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": {
-        "logGroupName": "*"
-      }
     }
   ],
   "/InfraStack/CDKMetadata/Default": [
@@ -212,143 +81,16 @@
       }
     }
   ],
-  "/InfraStack/deployment/FrontendBucket/Policy": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": {
-        "bucket": "*"
-      }
-    }
-  ],
-  "/InfraStack/deployment/FrontendBucket/AutoDeleteObjectsCustomResource": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": "*"
-    }
-  ],
   "/InfraStack/deployment/CloudfrontDistribution/Resource": [
     {
       "type": "aws:cdk:logicalId",
       "data": "deploymentCloudfrontDistributionDDB77E0D"
     }
   ],
-  "/InfraStack/deployment/BucketDeployment/AwsCliLayer": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": {}
-    }
-  ],
-  "/InfraStack/deployment/BucketDeployment/CustomResourceHandler": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": {
-        "uuid": "*",
-        "layers": [
-          "*"
-        ],
-        "environment": "*",
-        "lambdaPurpose": "*",
-        "timeout": "*",
-        "role": "*",
-        "memorySize": "*",
-        "ephemeralStorageSize": "*",
-        "vpc": "*",
-        "vpcSubnets": "*",
-        "securityGroups": "*",
-        "filesystem": "*",
-        "logGroup": "*",
-        "code": "*",
-        "handler": "*",
-        "runtime": "*"
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "addMetadata": [
-          "*",
-          true
-        ]
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "addMetadata": [
-          "*",
-          "*"
-        ]
-      }
-    }
-  ],
-  "/InfraStack/deployment/BucketDeployment/CustomResource": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": "*"
-    }
-  ],
   "/InfraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource": [
     {
       "type": "aws:cdk:logicalId",
       "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
-    }
-  ],
-  "/InfraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": "*"
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "attachToRole": [
-          "*"
-        ]
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "attachToRole": [
-          "*"
-        ]
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "addStatements": [
-          {}
-        ]
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "addStatements": [
-          {}
-        ]
-      }
-    },
-    {
-      "type": "aws:cdk:analytics:method",
-      "data": {
-        "addStatements": [
-          {}
-        ]
-      }
-    }
-  ],
-  "/InfraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Code/AssetBucket": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": "*"
-    }
-  ],
-  "/InfraStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/LogGroup/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CLogGroup817B64E9"
     }
   ],
   "/InfraStack/deployment/FrontendBucket/Policy/Resource": [
@@ -369,22 +111,10 @@
       "data": "deploymentFrontendBucketAutoDeleteObjectsCustomResourceD9E2DAF7"
     }
   ],
-  "/InfraStack/deployment/CloudfrontDistribution/Origin1/S3OriginAccessControl": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": "*"
-    }
-  ],
   "/InfraStack/deployment/BucketDeployment/AwsCliLayer/Resource": [
     {
       "type": "aws:cdk:logicalId",
       "data": "deploymentBucketDeploymentAwsCliLayerA85B3C9A"
-    }
-  ],
-  "/InfraStack/deployment/BucketDeployment/Asset1/AssetBucket": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": "*"
     }
   ],
   "/InfraStack/deployment/BucketDeployment/CustomResource/Default": [
@@ -403,12 +133,6 @@
     {
       "type": "aws:cdk:logicalId",
       "data": "deploymentCloudfrontDistributionOrigin1S3OriginAccessControl5D9F588E"
-    }
-  ],
-  "/InfraStack/deployment/BucketDeployment/AwsCliLayer/Code/AssetBucket": [
-    {
-      "type": "aws:cdk:analytics:construct",
-      "data": "*"
     }
   ]
 }
