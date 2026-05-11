@@ -11,8 +11,12 @@ import { Construct } from 'constructs';
 
 const path = './resources/build';
 
+interface DeploymentServiceProps {
+  apiDomainName: string;
+}
+
 export class DeploymentService extends Construct {
-  constructor(scope: Construct, id: string) {
+  constructor(scope: Construct, id: string, props: DeploymentServiceProps) {
     super(scope, id);
 
     const hostingBucket = new aws_s3.Bucket(this, 'FrontendBucket', {
@@ -41,6 +45,13 @@ export class DeploymentService extends Construct {
         ],
       }
     );
+
+    distribution.addBehavior('/prod/*', new aws_cloudfront_origins.HttpOrigin(props.apiDomainName), {
+      allowedMethods: aws_cloudfront.AllowedMethods.ALLOW_ALL,
+      viewerProtocolPolicy: aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+      cachePolicy: aws_cloudfront.CachePolicy.CACHING_DISABLED,
+      originRequestPolicy: aws_cloudfront.OriginRequestPolicy.ALL_VIEWER_EXCEPT_HOST_HEADER,
+    });
 
     new aws_s3_deployment.BucketDeployment(this, 'BucketDeployment', {
       sources: [aws_s3_deployment.Source.asset(path)],

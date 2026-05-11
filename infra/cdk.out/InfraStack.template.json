@@ -165,6 +165,25 @@
    "Type": "AWS::CloudFront::Distribution",
    "Properties": {
     "DistributionConfig": {
+     "CacheBehaviors": [
+      {
+       "AllowedMethods": [
+        "GET",
+        "HEAD",
+        "OPTIONS",
+        "PUT",
+        "PATCH",
+        "POST",
+        "DELETE"
+       ],
+       "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
+       "Compress": true,
+       "OriginRequestPolicyId": "b689b0a8-53d0-40ab-baf2-68738e2966ac",
+       "PathPattern": "/prod/*",
+       "TargetOriginId": "InfraStackdeploymentCloudfrontDistributionOrigin291253824",
+       "ViewerProtocolPolicy": "redirect-to-https"
+      }
+     ],
      "CustomErrorResponses": [
       {
        "ErrorCode": 404,
@@ -200,6 +219,30 @@
        "S3OriginConfig": {
         "OriginAccessIdentity": ""
        }
+      },
+      {
+       "CustomOriginConfig": {
+        "OriginProtocolPolicy": "https-only",
+        "OriginSSLProtocols": [
+         "TLSv1.2"
+        ]
+       },
+       "DomainName": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::ImportValue": "ProductServiceStack:ExportsOutputRefProductsApiEC66475F5EB8F6B8"
+          },
+          ".execute-api.",
+          {
+           "Ref": "AWS::Region"
+          },
+          ".amazonaws.com"
+         ]
+        ]
+       },
+       "Id": "InfraStackdeploymentCloudfrontDistributionOrigin291253824"
       }
      ]
     }
@@ -241,7 +284,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "ffc4d08c5e0103bf59f6cec1d319d5f7ccfccd1724b7d6ab24a5ccfe7429ba2e.zip"
+     "4e315228d556b4ef6b3970d583ba48940218a4370e33e668c57cdf2d7e750461.zip"
     ],
     "DestinationBucketName": {
      "Ref": "deploymentFrontendBucket67CEB713"

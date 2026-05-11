@@ -6,6 +6,8 @@ import * as path from 'path';
 import { PRODUCTS_TABLE_NAME, STOCK_TABLE_NAME } from './db/client';
 
 export class ProductServiceStack extends Stack {
+  public readonly apiDomain: string;
+
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
@@ -90,6 +92,8 @@ export class ProductServiceStack extends Stack {
     productByIdResource.addMethod('GET', new apigateway.LambdaIntegration(getProductsById));
 
 
+
+    this.apiDomain = `${api.restApiId}.execute-api.${this.region}.amazonaws.com`;
 
     new CfnOutput(this, 'ProductsApiUrl', {
       value: api.url,

@@ -11,10 +11,11 @@ export const handler = async (event: APIGatewayEvent) => {
   if (!productId) {
     return {
       statusCode: 400,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({ message: "Missing productId in path." }),
     };
   }
-  
+
   try {
     const productResult = await DYNAMO_DB_CLIENT.send(
       new GetCommand({
@@ -26,6 +27,7 @@ export const handler = async (event: APIGatewayEvent) => {
     if (!productResult.Item) {
       return {
         statusCode: 404,
+        headers: { 'Access-Control-Allow-Origin': '*' },
         body: JSON.stringify({ message: "Product not found." }),
       };
     }
@@ -44,11 +46,13 @@ export const handler = async (event: APIGatewayEvent) => {
 
     return {
       statusCode: 200,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify(joinedProduct),
     };
   } catch(e) {
     return {
       statusCode: 500,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({ message: "Internal server error", e }),
     };
   }

@@ -11,6 +11,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
     if (!title || !price || typeof count !== 'number') {
       return {
         statusCode: 400,
+        headers: { 'Access-Control-Allow-Origin': '*' },
         body: JSON.stringify({ message: 'title, price, and count are required' }),
       };
     }
@@ -41,11 +42,13 @@ export const handler: APIGatewayProxyHandler = async (event) => {
 
     return {
       statusCode: 201,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({ ...product, count }),
     };
   } catch (e) {
     return {
       statusCode: 500,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({ message: 'Internal server error', error: (e as Error).message }),
     };
   }
