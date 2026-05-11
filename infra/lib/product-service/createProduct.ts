@@ -1,6 +1,5 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import { PutCommand } from '@aws-sdk/lib-dynamodb';
-import { v4 as uuidv4 } from 'uuid';
 import { DYNAMO_DB_CLIENT, PRODUCTS_TABLE_NAME, STOCK_TABLE_NAME } from './db/client';
 
 export const handler: APIGatewayProxyHandler = async (event) => {
@@ -16,7 +15,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
       };
     }
 
-    const id = uuidv4();
+    const id = crypto.randomUUID();
 
     const product = {
       id,
