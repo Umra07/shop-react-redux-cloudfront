@@ -1,6 +1,6 @@
 # React-shop-cloudfront
 
-CloudFront: https://d18csssdlrt921.cloudfront.net/
+CloudFront: https://d2f6k2ojvc2ru.cloudfront.net/
 S3: https://staging.d247c0rm11ac7u.amplifyapp.com/
 
 This is frontend starter project for nodejs-aws mentoring program. It uses the following technologies:
