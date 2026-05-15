@@ -2,9 +2,11 @@
 import * as cdk from 'aws-cdk-lib/core';
 import { DeployWebAppStack } from '../lib/deploy-web-app-stack';
 import { ProductServiceStack } from "../lib/product-service/product-service-stack";
+import { ImportServiceStack } from '../lib/product-service/import-service-stack';
 
 const app = new cdk.App();
 const productServiceStack = new ProductServiceStack(app, "ProductServiceStack", {});
+const importServiceStack = new ImportServiceStack(app, "ImportServiceStack", {})
 new DeployWebAppStack(app, 'InfraStack', {
   apiDomainName: productServiceStack.apiDomain,
   /* If you don't specify 'env', this stack will be environment-agnostic.
@@ -21,5 +23,3 @@ new DeployWebAppStack(app, 'InfraStack', {
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
-
-new ProductServiceStack(app, "ProductServiceStack", {})

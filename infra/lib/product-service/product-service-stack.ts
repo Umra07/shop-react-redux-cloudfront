@@ -92,7 +92,7 @@ export class ProductServiceStack extends Stack {
 
     this.apiDomain = `${api.restApiId}.execute-api.${this.region}.amazonaws.com`;
 
-    new cdk.CfnOutput(this, 'ProductsApiUrl', {
+    new CfnOutput(this, 'ProductsApiUrl', {
       value: api.url,
       description: 'Products API Gateway URL',
       exportName: 'ProductsApiUrl',
