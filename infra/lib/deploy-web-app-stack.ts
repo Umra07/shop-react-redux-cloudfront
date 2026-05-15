@@ -6,7 +6,7 @@ interface DeployWebAppStackProps extends StackProps {
   apiDomainName: string;
 }
 export class DeployWebAppStack extends Stack {
-  constructor(scope: Construct, id: string, props?: DeployWebAppStackProps) {
+  constructor(scope: Construct, id: string, props: DeployWebAppStackProps) {
     super(scope, id, props);
 
     new DeploymentService(this, 'deployment', { apiDomainName: props.apiDomainName });
