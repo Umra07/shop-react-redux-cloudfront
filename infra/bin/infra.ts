@@ -4,7 +4,9 @@ import { DeployWebAppStack } from '../lib/deploy-web-app-stack';
 import { ProductServiceStack } from "../lib/product-service/product-service-stack";
 
 const app = new cdk.App();
+const productServiceStack = new ProductServiceStack(app, "ProductServiceStack", {});
 new DeployWebAppStack(app, 'InfraStack', {
+  apiDomainName: productServiceStack.apiDomain,
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */
